@@ -1,0 +1,129 @@
+/*
+ Body - The whole page background
+*/
+
+body {
+    background-color: #f9dde3; /* soft pink background for whole page*/
+    font-family: Georgia, serif;
+    color: #590D22;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 40px 20px; /* breathing room at top/bottom and sides */
+    position: relative; /* needed so corner flowers know where to anchor */ 
+}
+
+/*
+    Corner Flowers
+
+    position: absolute means "place me at the exact coords on page"
+
+    px are showing distance from top and side edges
+*/
+.corner { position: absolute; font-size: 28px; }
+.tl { top: 12px; left: 16px; }
+.tr { top: 12px; right: 16px; } 
+
+/* h1: the main page title */
+h1 {
+    font-family: 'Love Light', cursive; /* Google font loaded into HTML */
+    font-size: 2.5rem; /* relative size */
+    text-align: center; /* putting title aligned to the center */
+    color: #c4627e; /* deep pink fill color of the letters */
+    -webkit-text-stroke: 1.5px #ffffff; /* draws a lighter pink outline around the letters*/
+    paint-order: stroke fill; /* making sure the filling sits on top of the stroke */
+}
+
+h3 {
+    font-size: 1.1rem; /* slightly bigger than the default size */
+    line-height: 1.8; /* space gap in between lines so its easy to read */
+}
+
+/* paragraph text inside the letter */
+p {
+    font-size: 1.1rem; /* slightly bigger than the default size */
+    line-height: 1.8; /* space gap in between lines so its easy to read */
+}
+
+/* all GIF SETTINGS */
+.above-gif {
+    text-align: center; /* centers the gif horizontally */
+    margin-bottom: 16px; /* gap between gid and the card below row */
+}
+
+.above-gif img {
+  width: 130px;          /* controls how big the gif appears — change this freely 80 original */
+  height: auto;         /* keeps the gif proportional when you resize width */
+}
+
+/* Card wrapper - flex container that puts (left gif | card letter | right gif) in one row */
+.card-wrapper {
+  display: flex;          /* lines children up side by side */
+  align-items: center;    /* vertically centers the gifs with the card */
+  gap: 16px;              /* space between the gifs and the card */
+}
+
+/* side GIF (LEFT AND RIGHT GIFS of card letter) */
+.side-gif {
+  width: 130px;       /* how wide each side gif is — adjust to taste 90 original*/
+  height: auto;      /* stays proportional */
+  flex-shrink: 0;    /* stops the gif from squishing when the screen is small */
+}
+
+
+/* creating border for the letter paper to add text */
+.letter {
+    background: #fff; /* main color for the paper background, just white */
+    border: 2px dashed #D6C6F5; /* nice little outline design with dashes */
+    border-radius: 16px; /* rounds the corners of the box */
+    padding: 28px 32px; /* spaces inside the card between text and edges */
+    box-shadow: 0 4px 24px rgba(201, 24, 74, 0.08); /* soft pink shadow behind the card */
+  max-width: 480px; /* keeps the card from getting too wide */
+  margin: 0 auto; /* centers the card */
+}
+
+/* extra feature to have the three hearts floating in a loop */
+.hearts {
+    text-align: center; /* keeps the overall hearts aligned in*/
+    font-size: 18px; /* size of the heart emoji's */
+    letter-spacing: 6px; /* spaces between each heart */
+    margin-bottom: 20px; /* gap between the hearts and the letter card below */
+}
+
+/* each individual heart span gets the float animation */
+.hearts span {
+  display: inline-block; /* needed for transform/animation to work on inline elements */
+  animation: float 2.4s ease-in-out infinite;  /* runs the float animation on a loop */
+}
+
+/* delays each heart slightly so they don't all move at the same time */
+.hearts span:nth-child(2) { animation-delay: .4s; }
+.hearts span:nth-child(3) { animation-delay: .8s; }
+
+/* 
+   FLOAT ANIMATION
+   0% = start position
+   50% = middle (moved up 8px)
+   100% = back to start
+ */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }    /* sitting at normal position */
+  50%       { transform: translateY(-8px); } /* floated up 8 pixels */
+}
+
+
+/* floating text art — floats as one whole piece */
+.float-art {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.float-art pre {
+  display: inline-block;        /* shrinks to fit the art, not the full width */
+  font-size: 0.75rem;           /* adjust size — smaller = more delicate looking */
+  line-height: 1.3;             /* tightens the rows so it looks like one shape */
+  color: #c4627e;               /* matches your pink theme */
+  animation: float 2.4s ease-in-out infinite;  /* same float animation you already have */
+  margin: 0 auto;
+}
+
+
