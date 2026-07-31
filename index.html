@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>For you maemae 🤍</title>
+
+        <!-- this will load the google font "love light" so that h1 can be used for it-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap" rel="stylesheet">
+
+        
+        <!-- This connects the html to CSS file so the page creates more clean and cute format -->
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+
+        <!-- ============================= -->
+        <!-- ENVELOPE INTRO OVERLAY -->
+        <!-- Sits on top of everything else until clicked, then opens and reveals the page underneath -->
+        <!-- ============================= -->
+        <div class="envelope-overlay" id="envelopeOverlay">
+            <div class="envelope-scene">
+                <div class="envelope" id="envelope">
+                    <!-- solid envelope body (the base rectangle) -->
+                    <div class="envelope-body"></div>
+                    <!-- white letter, mostly tucked behind the pocket, just a sliver peeks out under the flap -->
+                    <div class="letter-inside">
+                        <span>🤍</span>
+                    </div>
+                    <!-- front pocket — sits on top of the letter so it reads as "inside" the envelope, not floating below it -->
+                    <div class="envelope-pocket"></div>
+                    <!-- the triangular flap that folds down over the top, this is what animates open -->
+                    <div class="envelope-flap"></div>
+                    <!-- little heart "seal" sitting at the tip of the flap -->
+                    <div class="envelope-seal">💗</div>
+                </div>
+                <p class="envelope-hint" id="envelopeHint">tap the envelope, maemae</p>
+            </div>
+        </div>
+
+        <!-- Corner Flowers: these sit in the corners -->
+        <span class="corner tl">🌷</span>
+        <span class="corner tr">🌹</span>
+
+        <!-- Main title of the page -->
+        <h1>Hiiii Beautiful</h1>
+
+        <br />
+        <!-- Floating hearts row -->
+        <div class="hearts">
+            <span>❤️</span>
+            <span>🤍</span>
+            <span>❤️</span>
+            <span>🤍</span>
+            <span>❤️</span>
+        </div>
+
+        <!-- Floating text art — the whole thing moves as one piece -->
+        <!--
+        <div class="float-art">
+            <pre>
+   ⣠⡶⢶⣦⠀⠀⠀⣠⡶⢶⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⢰⡟⠀⠀⢹⣧⠀⣸⠏⠀⠀⢻⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⣿⠁⠀⠀⠀⢿⣴⡿⠀⠀⠀⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⣿⠀⠀⠀⠀⢸⣿⠇⠀⠀⠀⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⢿⡆⠀⠀⠀⠈⣿⠀⠀⠀⠀⣸⡇⠀⠀⠀⠀⠀⠀⠀⠀⣀⣀⡀⠀⠀⠀⠀⠀
+⠀⢸⣷⠀⠀⠀⠀⠀⠀⠀⠀⢰⣟⠀⠀⠀⣀⣀⣀⣀⣀⣾⠋⠉⠹⣇⠀⠀⠀⠀
+⠀⣰⡿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠹⣧⣶⠞⠋⠉⠀⠈⠉⠃⠀⠀⢠⡟⠀⠀⠀⠀
+⢠⡿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢹⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠻⣦⡀⠀⠀
+⣸⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢘⣷⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⢷⣄⠀
+⢿⡇⠸⣿⠀⠀⠀⠀⠀⠀⣴⣆⠀⢸⡏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢻⡆
+⠸⣧⡀⠀⠀⢀⣶⣶⡆⠀⠈⠁⣰⡟⠁⠀⠀⠀⠀⠀⠀⠀⢀⣀⠀⠀⠀⠀⣸⡇
+⠀⠙⠻⣦⣄⣀⣀⣈⣁⣀⣤⠾⠋⠀⠀⠀⠀⠀⣀⣠⣴⡶⢿⡿⠿⠶⣶⠶⠟⠀
+⠀⠀⢠⡟⠉⢙⣿⠛⠋⠉⠁⠀⠀⣀⣠⣴⠶⠟⠛⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠘⢿⣤⣘⣿⡀⠀⠀⢀⣴⡿⠋⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠈⠉⠙⠛⠻⠿⠛⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+            </pre>
+        </div>
+        -->
+
+        <!-- The GIF above the letter card (MIFFY) -->
+        <div class="above-gif">
+            <img src="miffy.gif" alt="miffy gif">
+        </div>
+
+        <div class="card-wrapper">
+            <!-- Left Side GIF (MILK AND MOCHA)-->
+            <img class="side-gif" 
+            src="monchhichi-love-you.gif"
+            alt="monchhichi">
+
+            <!-- entire letter text itself -->
+            <div class="letter">
+
+                <h3>Dear Meagan Li,</h3><br /><br />
+            
+                <p>
+                    This is your future and forever loving nerdy bf/huband, Sean 😙😎
+                </p> <br/>
+                <p>
+                    Happy National GF's day my love!
+                </p>
+                <p>
+                    To be honest, I dont even know where to start, because theres just so much to talk about. 
+                    you went from being such a great person in my life to becoming the most important part of it.
+                </p>
+                <p>
+                    Its actually kind of funny, when we were still just friends catching up every now and then, we'd both talk about how hard love was. 
+                    How we couldn't seem to find it. And the whole time, it was right in front of us. I love how we started as friends, 
+                    how we went from "I care about you more" to "I miss you more" to now "I love you more." I wouldn't change how any of it happened.
+                </p>
+                <!-- 
+                <p>
+                    Even with the distance between the two of us, you've made things feel close.
+                    I love how honest we both are with each other. The fact that we can still talk about anything, 
+                    reassure each other more and more, and be patient with one another means so much more than you probably realize.
+                </p>
+                -->
+                <p>
+                    Every text, every movie night, every “I miss you more” argument that neither of us will ever let the other win. 
+                    Every late night call where we talk until we forget the time and fall asleep. Nothing about us ever felt forced to me. 
+                </p>
+                <!--- lines archived in paragraph below:
+                    Thank you for being the reason I wanna wake up two hrs early to catch you before u start ur day. 
+
+                -->
+                <p>
+                    Thank you for all of it, Maegan. Thank you for the late nights you stayed on call even when you were tired. 
+                    Thank you for always doing questions with me, for letting me vent, and the 
+                    random conversations that somehow turned into the most meaningful ones. 
+                    And thank you for being the reason I get to smile more, because seeing ur notification pop up genuinely makes my heart melt every time.
+                    But really, thank you for showing me what it looks like when someone actually cares, not in a perfect way, but in a real way.
+                </p>
+                <p>
+                    I know I may not be the first person to make you laugh, or the first person to stay up late talking about life issues, 
+                    and we may not be each others first love either. But honestly, I could care less about being the first, 
+                    because id rather be the last, the one who stays. 
+                </p>
+                <p>
+                    I want to be the person who never falls out of love because of a small fight, a misunderstanding, or because things get hard. 
+                    Whether its dry moments or miscommunication,
+                    my heart still picks you, because it doesnt know how to stop loving you. And Im glad I never let it.
+                </p>
+                <p>
+                    And not everyday will be a good day. But you help me find something good in even the rough ones. Thats 
+                    something I take very personally. The world feels brighter and warmer because you're in it.
+                </p>
+                <!-- 
+                <p>
+                    Thats actually why you remind me of a flamingo. <br/>
+                    Remember when we asked each other what animal reminded us of each other?
+                </p>
+                <p>
+                    It probably sounds random at first, but 
+                    their colors are soft but vibrant, and no matter their environment, they naturally catch your attention, 
+                    and they do it just by being exactly who they are. Thats when I knew one thing: Loving you felt natural.
+                </p>
+                -->
+                <p>
+                    I also want you to know how much I admire how hard you try. You mentioned once that you can be avoidant sometimes, 
+                    but even then, you still show up. not just for me, for each other, but most importantly, for you. 
+                    Even when you send a dry text, don't text me for hours while i get worried, or even when you feel overwhelmed and 
+                    head straight to bed without saying goodnight, 
+                    you still find a way to make things work. 
+                    Thats not small. Thats one of the purest and rarest values a beautiful women such as yourself holds Maegan.
+                </p>
+                <p>
+                    Im forever proud of your efforts, not just your results.
+                </p>
+                <p>
+                    I dont take it for granted that you let me in. 
+                    I know you dont open up to just anyone, and the fact that you've 
+                    shared your heart with me, means everything. I promise to be extra gentle with your heart. Always.
+                </p>
+                <p>
+                    And please dont be scared that i'm going to leave. I know thats been a fear for us, and I understand, I really do. 
+                    But I need you to know, <u><strong>i am not them</strong></u>. Im not here to love bomb and disappear. 
+                    You dont have to second guess my intentions, and you dont have to earn my love by being perfect. I love every part of you. 
+                    You've always been willing to wait, and you told me that, especially if its with the right one. I'm glad I am that one.
+                </p>
+                <p>
+                    You can always, always bother me. You are never a burden, you are never going to annoy me, and you 
+                    are most definitely not gonna be too much for me. No matter whats on your mind, I'd rather have 
+                    you tell me whats in your heart than sit with it alone. My door is always open for you, Maemae. Always 💗
+                </p>
+                <!--
+                <p>
+                    And I hope you know, Im not saying all of this just to sound sweet or to make some perfect love letter. 
+                    but because my heart knows the right things to say when it involves you. 
+                    what i say may not always sound perfect, but its pure and honest. And maybe thats what makes it perfect. 
+                    Every word comes from the real me, 
+                    the me that wants to cherish you with love and appreciation, and celebrate all of your moments, big and small.
+                </p>
+                -->
+                <p>
+                    I can't wait to listen to Bruno Mars and Yel with you on random weekdays <br/>
+                    <!-- I can't wait to always wait for your notifications and calls <br/> -->
+                    <!-- I can't wait to argue over who gets the last Xtra Flamin Hot Cheeto during movie night. <br/> -->
+                    I can't wait to be part of your family movie night. <br/>
+                    <!-- I can't wait to be in each others 7 minutes.<br/> -->
+                    I can't wait to have pink drink dates with you just because. <br/>
+                    I can't wait to go to Brandy Melville with you and spend all of my money <br/>
+                    I can't wait for your coconut mango shampoo to be the first thing I notice when I hug you.<br/>
+                    <!-- I can't wait to always hold ur hand, and be by ur presence <br/> -->
+                    I can't wait for the distance between us to shorten. <br/>
+                    but I mostly can't wait to be someone you and your family is proud to know.<br/>
+                </p>
+                <p>
+                    Throughout all of the random bullshit we go through, I want to go through it with only you. 
+                    Because for once, I found someone that makes every rough moment worth getting through with. 
+                    You make it feel right.
+                    <!--
+                    theres nothing I want more than to spend every moment with my future girlfriend, my future wife, 
+                    and the one who makes my world feel right.
+                    -->
+                </p>
+                <p>
+                    I dont want to rush us into something before life gives us the right moment. 
+                    I dont need a title tomorrow to know what you mean to me today.
+                    What matters most to me is continuing to grow with you, learn with you, 
+                    and continuing to show up, choosing each other the same way we always have been.
+                </p>
+                <p>
+                    one day, when the distance is shorter, when timing is kinder to us, I will ask you that special question 👀
+                </p>
+                <p>
+                    But until then, as I continue to give my love to you and to us, 
+                    I hope you also continue to give that same love back to yourself. 
+                    I hope you see the women I see everyday: someone who is smart, warm, 
+                    funny, and so incredible worth loving. 
+                    you deserve to see your own worth the way i see it, and Ill spend as long as 
+                    it takes reminding you of it, until you fully believe it.
+                </p>
+                <p>
+                    I just hope you never forget how deeply loved, appreciated, and cherished you are to me. 
+                    and that we soon will be together 🍊
+                </p>
+                <p> I LOVEEE AND MISSSS YOU <strong><u>THE MOST</u></strong>!</p>
+                <p>
+                    Your future and love, <br/>
+                </p>
+
+                <h3>- Sean Harayama Tablazon 🫰🏻🥰</h3>
+
+
+                <div class="proof-link">
+                    <p>
+                        In case you still think you love me more...
+                    </p>
+
+                    <a href="proof.html"> 
+                        😙👉🏼 Click here
+                    </a>
+                </div>
+            </div> <!-- end of letter class scope -->
+
+            <!-- right side GIF (HELLO KITTY)-->
+            <img class="side-gif" 
+            src="hellokittymissyou.gif"
+            alt="helloKittyMissYou">
+            
+        </div> <!-- end of wrapper class scope -->
+
+        <script>
+            // Handles the envelope intro: click to open, then the whole overlay
+            // fades away so the letter page underneath is revealed.
+            const envelope = document.getElementById('envelope');
+            const overlay = document.getElementById('envelopeOverlay');
+            const hint = document.getElementById('envelopeHint');
+
+            envelope.addEventListener('click', () => {
+                // prevent double-clicking from restarting the animation
+                if (envelope.classList.contains('open')) return;
+
+                envelope.classList.add('open');
+                hint.style.opacity = '0';
+
+                // wait for the flap + letter animation to finish, then fade the whole overlay out
+                setTimeout(() => {
+                    overlay.classList.add('fade-out');
+                }, 1400);
+
+                // after the fade finishes, remove the overlay from the page completely
+                // so it doesn't block clicks/scrolling on the letter underneath
+                setTimeout(() => {
+                    overlay.style.display = 'none';
+                }, 2200);
+            });
+        </script>
+    </body>
+</html>
